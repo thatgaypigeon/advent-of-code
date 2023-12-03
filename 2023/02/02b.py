@@ -1,6 +1,6 @@
 sum = 0
 
-with open("2023/02/input.txt", "r") as f:
+with open("input.txt", "r") as f:
     for line in f.readlines():
         game, rounds = line.strip().split(": ", 1)
 

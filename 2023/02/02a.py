@@ -1,7 +1,7 @@
 possible = set()
 not_possible = set()
 
-with open("2023/02/input.txt", "r") as f:
+with open("input.txt", "r") as f:
     for line in f.readlines():
         game, rounds = line.strip().split(": ", 1)
         game_id = int(game.split(" ")[1])

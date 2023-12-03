@@ -3,7 +3,7 @@ import re
 sum = 0
 words = ["N/A", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
 
-with open("2023/01/input.txt", "r") as f:
+with open("input.txt", "r") as f:
     for index, line in enumerate(f.readlines()):
         matches = re.findall(r"(?=(\d|one|two|three|four|five|six|seven|eight|nine))", line)
 
