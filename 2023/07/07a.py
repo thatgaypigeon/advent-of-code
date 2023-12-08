@@ -1,7 +1,7 @@
 winnings = []
 
 card_values = ["A", "K", "Q", "J", "T", "9", "8", "7", "6", "5", "4", "3", "2"]
-types = ["5K", "4K", "FH",  "3K", "2P", "1P", "HC"]
+types = ["5K", "4K", "FH", "3K", "2P", "1P", "HC"]
 
 with open("input.txt", "r") as f:
     order: dict[str, list[str]] = {k: [] for k in types}
