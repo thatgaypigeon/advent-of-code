@@ -27,8 +27,12 @@ with open("input.txt", "r") as f:
                     if 0 <= row_to_check < len(grid):
                         for char_to_check in range(num_start - 1, num_end + 2):
                             if 0 <= char_to_check < len(grid[row_to_check]):
-                                if (check_char := grid[row_to_check][char_to_check]) == "*":
-                                    gears.setdefault((row_to_check, char_to_check), []).append(int(cur_num))
+                                if (
+                                    check_char := grid[row_to_check][char_to_check]
+                                ) == "*":
+                                    gears.setdefault(
+                                        (row_to_check, char_to_check), []
+                                    ).append(int(cur_num))
 
                 cur_num = ""
                 num_start = None
@@ -37,7 +41,8 @@ with open("input.txt", "r") as f:
 for gear, nums in gears.items():
     if len(nums) > 1:
         product = 1
-        for num in nums: product *= num
+        for num in nums:
+            product *= num
         sum += product
 
 print(sum)

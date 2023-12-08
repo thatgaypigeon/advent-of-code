@@ -1,8 +1,9 @@
+DIGITS: list[str] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
 sum = 0
-digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 with open("input.txt", "r") as f:
-    grid = []
+    grid: list = []
 
     for line in f.readlines():
         grid.append(list("." + line.strip() + "."))
@@ -13,7 +14,7 @@ with open("input.txt", "r") as f:
         num_end = None
 
         for index, char in enumerate(row):
-            if char in digits:
+            if char in DIGITS:
                 num_start = index if num_start is None else num_start
                 cur_num += char
 
@@ -26,7 +27,9 @@ with open("input.txt", "r") as f:
                     if 0 <= row_to_check < len(grid):
                         for char_to_check in range(num_start - 1, num_end + 2):
                             if 0 <= char_to_check < len(grid[row_to_check]):
-                                if (check_char := grid[row_to_check][char_to_check]) != "." and (check_char not in digits):
+                                if (
+                                    check_char := grid[row_to_check][char_to_check]
+                                ) != "." and (check_char not in DIGITS):
                                     is_lonely = False
                                     break
 
@@ -36,6 +39,5 @@ with open("input.txt", "r") as f:
                 cur_num = ""
                 num_start = None
                 num_end = None
-
 
 print(sum)
