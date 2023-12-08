@@ -1,14 +1,18 @@
 from math import gcd
 
+
 def lmap(func, _list: list) -> list:
     return list(map(func, _list))
+
 
 def dir_to_int(direction: str):
     states = ["L", "R"]
     return states.index(direction)
 
+
 def is_end(node: str) -> bool:
     return node != "" and node[-1] == "Z"
+
 
 with open("input.txt", "r") as f:
     lines: list[str] = lmap(str.strip, f.readlines())

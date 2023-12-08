@@ -1,6 +1,7 @@
 def lmap(func, _list: list) -> list:
     return list(map(func, _list))
 
+
 def dir_to_int(direction: str):
     states = ["L", "R"]
     return states.index(direction)
