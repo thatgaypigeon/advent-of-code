@@ -1,4 +1,3 @@
-
 with open("input.txt", "r") as f:
     cards = f.readlines()
 
@@ -15,5 +14,4 @@ with open("input.txt", "r") as f:
             for j in range(matches):
                 copies[index + j + 1] += 1
 
-# print(copies)
 print(sum(copies))
