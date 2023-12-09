@@ -22,9 +22,7 @@ with open("input.txt", "r") as f:
         )
 
         d1: int | str = WORDS.index(matches[0]) if matches[0] in WORDS else matches[0]
-        d2: int | str = (
-            WORDS.index(matches[-1]) if matches[-1] in WORDS else matches[-1]
-        )
+        d2: int | str = WORDS.index(matches[-1]) if matches[-1] in WORDS else matches[-1]
 
         sum += int(str(d1) + str(d2))
 
