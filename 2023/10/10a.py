@@ -70,22 +70,15 @@ with open("input.txt", "r") as f:
     start: Pipe
 
     for row_i, line in enumerate(f.readlines()):
-        if not grid:
-            grid.append([Pipe(" ", (char_i + 1, row_i)) for char_i in range(len(line))])
-
-        row = [Pipe(" ", (0, row_i))]
+        row = []
         for char_i, char in enumerate(list(line.strip())):
-            pipe = Pipe(char, (char_i + 1, row_i + 1))
+            pipe = Pipe(char, (char_i, row_i))
             row.append(pipe)
 
             if pipe.start:
                 start = pipe
 
-        row.append(Pipe(char, (len(row) + 1, row_i)))
-
         grid.append(row)
-
-    grid.append([Pipe(" ", (char_i, row_i)) for char_i in range(len(line))])
 
     start_coords = start.coords
 
@@ -109,10 +102,26 @@ with open("input.txt", "r") as f:
         started = True
         counter += 1
 
-        N = grid[pipe.coords[1] - 1][pipe.coords[0]]
-        S = grid[pipe.coords[1] + 1][pipe.coords[0]]
-        E = grid[pipe.coords[1]][pipe.coords[0] + 1]
-        W = grid[pipe.coords[1]][pipe.coords[0] - 1]
+        try:
+            N = grid[pipe.coords[1] - 1][pipe.coords[0]]
+        except IndexError:
+            N = Pipe(" ", (0, 0))
+
+        try:
+            S = grid[pipe.coords[1] + 1][pipe.coords[0]]
+        except IndexError:
+            S = Pipe(" ", (0, 0))
+
+        try:
+            E = grid[pipe.coords[1]][pipe.coords[0] + 1]
+        except IndexError:
+            E = Pipe(" ", (0, 0))
+
+        try:
+            W = grid[pipe.coords[1]][pipe.coords[0] - 1]
+        except IndexError:
+            W = Pipe(" ", (0, 0))
+
 
         if pipe.north and N.south and N.coords != prev.coords: # row above
             prev = pipe
