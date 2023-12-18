@@ -1,5 +1,3 @@
-DIGITS: list[str] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-
 sum = 0
 
 with open("input.txt", "r") as f:
@@ -14,7 +12,7 @@ with open("input.txt", "r") as f:
         num_end = None
 
         for index, char in enumerate(row):
-            if char in DIGITS:
+            if char.isdigit():
                 num_start = index if num_start is None else num_start
                 cur_num += char
 
@@ -29,7 +27,7 @@ with open("input.txt", "r") as f:
                             if 0 <= char_to_check < len(grid[row_to_check]):
                                 if (
                                     check_char := grid[row_to_check][char_to_check]
-                                ) != "." and (check_char not in DIGITS):
+                                ) != "." and (not check_char.isdigit()):
                                     is_lonely = False
                                     break
 
